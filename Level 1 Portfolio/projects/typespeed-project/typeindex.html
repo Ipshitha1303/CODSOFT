@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Speed Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #e3f2fd;
+            color: black;
+        }
+        #text-display {
+            font-size: 20px;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        #input-box {
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+            background: white;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        #restart-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        #restart-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="color: #007BFF;">🔥 Typing Speed Test 🔥</h2>
+    <p id="text-display"></p>
+    <textarea id="input-box" rows="4" placeholder="Start typing here..."></textarea>
+    <p id="result"></p>
+    <button id="restart-btn">🔄 Restart</button>
+    
+    <script>
+        const texts = [
+            "The quick brown fox jumps over the lazy dog.",
+            "Typing speed test is fun and useful.",
+            "Practice makes perfect in typing.",
+        ];
+        
+        let startTime;
+        const textDisplay = document.getElementById("text-display");
+        const inputBox = document.getElementById("input-box");
+        const result = document.getElementById("result");
+        const restartBtn = document.getElementById("restart-btn");
+        
+        function startGame() {
+            const randomText = texts[Math.floor(Math.random() * texts.length)];
+            textDisplay.textContent = randomText;
+            inputBox.value = "";
+            result.textContent = "";
+            result.style.color = "black";
+            startTime = null;
+        }
+        
+        inputBox.addEventListener("input", function () {
+            if (!startTime) startTime = new Date();
+            const inputText = inputBox.value.trim();
+            const originalText = textDisplay.textContent;
+            
+            if (inputText === originalText) {
+                const endTime = new Date();
+                const timeTaken = (endTime - startTime) / 1000; // in seconds
+                const wordCount = originalText.split(" ").length;
+                const wpm = Math.round((wordCount / timeTaken) * 60);
+                
+                let correctChars = 0;
+                for (let i = 0; i < inputText.length; i++) {
+                    if (inputText[i] === originalText[i]) correctChars++;
+                }
+                const accuracy = ((correctChars / originalText.length) * 100).toFixed(2);
+                
+                if (wpm > 60) {
+                    result.style.color = "green";
+                    result.textContent = `🎉 Amazing! Your typing speed: ${wpm} WPM | Accuracy: ${accuracy}% 🚀`;
+                } else if (wpm > 30) {
+                    result.style.color = "orange";
+                    result.textContent = `😊 Good job! Your typing speed: ${wpm} WPM | Accuracy: ${accuracy}% 👍`;
+                } else {
+                    result.style.color = "red";
+                    result.textContent = `😅 Keep practicing! Your typing speed: ${wpm} WPM | Accuracy: ${accuracy}% 💪`;
+                }
+            }
+        });
+        
+        restartBtn.addEventListener("click", startGame);
+        
+        startGame();
+    </script>
+</body>
+</html>
