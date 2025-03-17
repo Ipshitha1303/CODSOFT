@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌍 Travel & Adventure</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="contact-info">
+                <p>📞 +91 9********0 | ✉️ explore@traveladventure.com</p>
+            </div>
+            <button class="consult-btn">📅 Book Your Trip</button>
+        </div>
+        <nav>
+            <h1>🌍 Travel & Adventure</h1>
+            <ul>
+                <li><a href="#">🏠 Home</a></li>
+                <li><a href="#">🌍 Destinations</a></li>
+                <li><a href="#">📦 Packages</a></li>
+                <li><a href="#">🖼️ Gallery</a></li>
+                <li><a href="#">⭐ Testimonials</a></li>
+                <li><a href="#">📞 Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="hero">
+        <h2 style="color: black;">✈️ Explore the World with Us</h2>
+        <p>🗺️ Discover breathtaking destinations and create unforgettable memories.</p>
+        <button class="btn-primary" style="color: black;">🌍 Explore Now</button>
+        <button class="btn-secondary" style="color: black;">🎟️ Book a Trip</button>
+    </section>
+    <section class="features">
+        <h2>Why Travel With Us?</h2>
+        <div class="feature-box">✨ Luxury Packages</div>
+        <div class="feature-box">👨‍🏫 Experienced Guides</div>
+        <div class="feature-box">📞 24/7 Customer Support</div>
+    </section>
+    <section class="about">
+        <h2>🏕️ About Us</h2>
+        <p>For over a decade, we have been offering the best travel experiences worldwide.</p>
+        <button class="btn-primary">📖 Read More</button>
+    </section>
+    <section class="services">
+        <h2>🌴 Our Travel Services</h2>
+        <div class="category-buttons">
+            <button onclick="showCategory('adventure')">⛰️ Adventure & Exploration</button>
+            <button onclick="showCategory('relaxation')">🏝️ Relaxation & Getaways</button>
+            <button onclick="showCategory('cultural')">🏛️ Cultural & Heritage</button>
+            <button onclick="showCategory('seasonal')">❄️ Seasonal & Special</button>
+        </div>
+        <div id="adventure" class="category-content">
+            <div class="service-box">⛰️ Mountain Explorer</div>
+            <div class="service-box">🐘 Wildlife Safari</div>
+            <div class="service-box">🏜️ Desert Expedition</div>
+            <div class="service-box">🌲 Jungle Trekking</div>
+            <div class="service-box">🌋 Volcano Hike Adventure</div>
+        </div>
+        <div id="relaxation" class="category-content hidden">
+            <div class="service-box">🏖️ Beach Paradise Retreat</div>
+            <div class="service-box">🌅 Luxury Island Escape</div>
+            <div class="service-box">💆 Wellness & Spa Retreat</div>
+            <div class="service-box">🌿 Nature Healing Trip</div>
+            <div class="service-box">🌊 Seaside Serenity Tour</div>
+        </div>
+        <div id="cultural" class="category-content hidden">
+            <div class="service-box">🏰 Historic Wonders Tour</div>
+            <div class="service-box">⛩️ Ancient Temples Discovery</div>
+            <div class="service-box">👑 Royal Heritage Trail</div>
+            <div class="service-box">🎭 Cultural Fest Experience</div>
+            <div class="service-box">🙏 Spiritual Journey</div>
+        </div>
+        <div id="seasonal" class="category-content hidden">
+            <div class="service-box">❄️ Winter Wonderland Tour</div>
+            <div class="service-box">🌸 Cherry Blossom Delight</div>
+            <div class="service-box">🍂 Autumn Foliage Adventure</div>
+            <div class="service-box">🌌 Northern Lights Experience</div>
+            <div class="service-box">🎆 New Year Celebration Tour</div>
+        </div>
+    </section>
+    <script>
+        function showCategory(category) {
+            let categories = document.querySelectorAll('.category-content');
+            categories.forEach(cat => cat.classList.add('hidden'));
+            document.getElementById(category).classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
